@@ -86,33 +86,3 @@ From Alphabet Soup’s business team, you have received access to a CSV containi
        how a different model could solve this classification problem, and then explain your recommendation.
 
        # Step 5: Copy Files Into Your Repository # 
-     
-
-########### Step 4 Answers ##########
-
-# 1. Overview
-        The goal of this analysis was to build a deep learning model that predicts the likelihood of success for applicants to the Alphabet Soup charity organization. This enables the organization to make more informed decisions and allocate resources more effectively to the most promising candidates.
-# 2. Results
-  #    2.a Data Preprocessing
-            Target Variable: `IS_SUCCESSFUL` (Binary: 1 if venture was successful, 0 otherwise)
-            Feature Variables: All remaining columns after dropping `EIN` and `NAME` were used, including categorical variables transformed using one-hot encoding. 
-                               These features represented applicant demographics, financials, and application details.
-            Removed Variables:`EIN` and `NAME` were removed as they do not contribute to the predictive capabilities of the model.
-
-  #   2.b Compiling, Training, and Evaluating the Model
-       a. Initial Neural Network Model: 'Starter_Code.ipynb'**
-       b. Layers: 2 hiddden layers  
-       c. Neurons: 80 in the first layer, 30 in the second layer  
-       d. Activation Functions: RELU for hidden layers, SIGMOID for output  
-       e. Accuracy: 73%   
-     This baseline configuration used a common activation function RELU for handling non-linear relationships and a SIGMOID activation in the output layer for binary classification.
-
-  #  3.Summary
-        To further enhance the model's performance, Keras Tuner with Hyperband optimization was employed for fine-tuning. Three model variations were tested, focusing on key hyperparameters and architectural adjustments.
-        The number of neurons in each layer was carefully adjusted, and a variety of activation functions were explored, including ReLU, Tanh, and Sigmoid. Beyond these, the architecture was expanded to include larger layer sizes and additional activation options such as SELU and Leaky ReLU, providing greater flexibility in capturing complex data patterns.
-        Regularization techniques were incorporated to reduce overfitting and improve generalization. Dropout layers were added with rates of 0.2, 0.3, and 0.5, significantly enhancing the model's robustness. Furthermore, learning rates were tuned with values of 0.001, 0.005, and 0.01, enabling the optimizer to converge effectively without overshooting the minimum.
-        This comprehensive fine-tuning process not only improved the model's accuracy but also contributed to its overall stability and reliability, ensuring that it remains a powerful tool for Alphabet Soup charity's decision-making framework.
-        To further improve predictive performance and model interpretability, it is advisable to explore alternative machine learning models that may be better suited to the structure and characteristics of the dataset:
-        Random Forest Classifier is ensemble method effectively handles categorical variables and provides clear insights into feature importance, supporting transparency and interpretability in the decision-making process.
-        XGBoost Classifier is known for its high accuracy on structured data, XGBoost is particularly adept at managing class imbalances—making it a strong candidate for enhancing prediction reliabilit
-
