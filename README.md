@@ -21,7 +21,8 @@ From Alphabet Soup’s business team, you have received access to a CSV containi
   # Instructions #
 
     # Step 1: Preprocess the Data #
-    Using your knowledge of Pandas and scikit-learn’s StandardScaler(), you’ll need to preprocess the dataset. This step prepares you for Step 2, 
+    Using your knowledge of Pandas and scikit-learn’s StandardScaler(), you’ll need to preprocess the dataset. 
+    This step prepares you for Step 2.
     where you'll compile, train, and evaluate the neural network model.
     Start by uploading the starter file to Google Colab, then using the information we provided in the Challenge files, follow the instructions to complete the preprocessing steps.
       1. From the provided cloud URL, read in the charity_data.csv to a Pandas DataFrame, and be sure to identify the following in your dataset:
@@ -86,3 +87,53 @@ From Alphabet Soup’s business team, you have received access to a CSV containi
        how a different model could solve this classification problem, and then explain your recommendation.
 
        # Step 5: Copy Files Into Your Repository # 
+     
+
+########### Step 4 Answers ##########
+
+# 1. Overview
+        The goal of this analysis was to build a deep learning model that predicts the likelihood of success for applicants to the Alphabet Soup charity organization. This enables the organization to make more informed decisions and allocate resources more effectively to the most promising candidates.
+# 2. Results
+  #    2.a Data Preprocessing
+            Target Variable: `IS_SUCCESSFUL`
+            Feature Variables: 
+              * `APPLICATION_TYPE`
+              * `AFFILIATION`
+              * `CLASSIFICATION`
+              * `USE_CASE`
+              * `ORGANIZATION`
+              * 'INCOME_AMT`
+              * `ASK_AMT`
+            Removed Variables:
+              * `EIN` and `NAME` were removed because it doesn't affect the predictive capabilities of the model.
+
+  #   2.b Compiling, Training, and Evaluating the Model
+       a. Initial Neural Network Model: 'Starter_Code.ipynb'**
+       b. Layers: 2 hiddden layers  
+       c. Neurons: 80 in the first layer, 30 in the second layer  
+       d. Activation Functions: RELU for hidden layers, SIGMOID for output  
+       e. Accuracy: 73%   
+     This baseline configuration used a common activation function RELU for handling non-linear relationships and a SIGMOID activation in the output layer for binary classification.
+
+#     2.c  Model Optimization Attempts 
+      Utilized Keras Tuner  with Hyperband optimization in all models:
+       a. Tuned neuron counts 
+       b. Increased layer sizes 
+       c. Included regularization and dropout layers.
+
+ #     2.d  Best Model Configuration Found 
+    Activation Function: `sigmoid`
+        a. Layers: hidden layers with dropout regularization
+        b. Neurons: Ranged from 16 to 128 per layer
+        c. Learning Rate: Tuned using Adam optimizer
+        d. Final Accuracy: 73%    
+
+  #  3.Summary
+        To further enhance the model's performance, Keras Tuner with Hyperband optimization was employed for fine-tuning. However the 75% accuracy was met despite the different models variations were tested.
+        The number of neurons in each layer was carefully adjusted, and a variety of activation functions were explored, including ReLU, Tanh, and Sigmoid. Beyond these, the architecture was expanded to include larger layer sizes and additional activation options such as SELU and Leaky ReLU, providing greater flexibility in capturing complex data patterns.
+        Regularization techniques were incorporated to reduce overfitting and improve generalization. Dropout layers were added significantly enhancing the model's robustness. Furthermore, learning rates were tuned,enabling the optimizer to converge effectively without overshooting the minimum.
+        This comprehensive fine-tuning process not only improved the model's accuracy but also contributed to its overall stability and reliability, ensuring that it remains a powerful tool for Alphabet Soup charity's decision-making framework.
+        To further improve predictive performance and model interpretability, it is advisable to explore alternative machine learning models that may be better suited to the structure and characteristics of the dataset:
+        Random Forest Classifier is ensemble method effectively handles categorical variables and provides clear insights into feature importance, supporting transparency and interpretability in the decision-making process.
+        XGBoost Classifier is known for its high accuracy on structured data, XGBoost is particularly adept at managing class imbalances—making it a strong candidate for enhancing prediction reliability.
+
